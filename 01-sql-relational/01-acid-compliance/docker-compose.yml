@@ -1,0 +1,34 @@
+# ACID lab: one PostgreSQL and one MySQL server.
+# Start:  docker compose up -d
+# Stop:   docker compose down        (add -v to wipe the data volumes)
+services:
+  postgres:
+    image: postgres:16
+    container_name: acid-postgres
+    environment:
+      POSTGRES_USER: learner
+      POSTGRES_PASSWORD: learner
+      POSTGRES_DB: acid_lab
+    ports:
+      - "5433:5432"   # host 5433 to avoid clashing with a local Postgres on 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./postgres:/scripts:ro
+
+  mysql:
+    image: mysql:8.4
+    container_name: acid-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: learner
+      MYSQL_DATABASE: acid_lab
+      MYSQL_USER: learner
+      MYSQL_PASSWORD: learner
+    ports:
+      - "3307:3306"   # host 3307 to avoid clashing with a local MySQL on 3306
+    volumes:
+      - mysqldata:/var/lib/mysql
+      - ./mysql:/scripts:ro
+
+volumes:
+  pgdata:
+  mysqldata:
