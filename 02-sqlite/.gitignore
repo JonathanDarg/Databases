@@ -1,0 +1,7 @@
+# SQLite database files created by the lessons
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+out/*
+!out/.gitkeep

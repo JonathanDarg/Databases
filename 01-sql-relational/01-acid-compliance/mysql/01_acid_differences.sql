@@ -3,8 +3,8 @@
 --
 -- Run from the 01-acid-compliance folder. --force keeps going past the EXPECTED errors
 -- (MySQL's `source` command would stop at the first one):
---   docker compose exec -T mysql mysql -ulearner -plearner --force -t acid_lab < mysql/00_setup.sql
---   docker compose exec -T mysql mysql -ulearner -plearner --force -t acid_lab < mysql/01_acid_differences.sql
+--   docker compose exec mysql sh -c "mysql -ulearner -plearner --force -t acid_lab < /scripts/00_setup.sql"
+--   docker compose exec mysql sh -c "mysql -ulearner -plearner --force -t acid_lab < /scripts/01_acid_differences.sql"
 
 SELECT '=== Gotcha 1: ROLLBACK does nothing on MyISAM (no atomicity) ===' AS '';
 START TRANSACTION;

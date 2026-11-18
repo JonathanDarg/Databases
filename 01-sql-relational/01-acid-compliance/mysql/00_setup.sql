@@ -2,7 +2,7 @@
 -- Same bank as the Postgres lab, plus a MyISAM copy to show what NON-ACID looks like.
 --
 -- Run (from the 01-acid-compliance folder):
---   docker compose exec -T mysql mysql -ulearner -plearner -t acid_lab < mysql/00_setup.sql
+--   docker compose exec mysql sh -c "mysql -ulearner -plearner -t acid_lab < /scripts/00_setup.sql"
 -- or inside an interactive mysql shell:  source /scripts/00_setup.sql
 
 DROP TABLE IF EXISTS transfers;

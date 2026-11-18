@@ -21,9 +21,10 @@ around the edges is different, though, and those edges cause real production bug
 From the `01-acid-compliance` folder (`--force` keeps going past the *expected* errors):
 
 ```bash
-docker compose exec -T mysql mysql -ulearner -plearner --force -t acid_lab < mysql/00_setup.sql
-docker compose exec -T mysql mysql -ulearner -plearner --force -t acid_lab < mysql/01_acid_differences.sql
+docker compose exec mysql sh -c "mysql -ulearner -plearner --force -t acid_lab < /scripts/00_setup.sql"
+docker compose exec mysql sh -c "mysql -ulearner -plearner --force -t acid_lab < /scripts/01_acid_differences.sql"
 ```
+(The `<` runs *inside* the container, so this works in PowerShell too. PowerShell has no `<` redirection of its own.)
 
 For an interactive shell (needed for the two-session labs below):
 `docker compose exec mysql mysql -ulearner -plearner acid_lab`

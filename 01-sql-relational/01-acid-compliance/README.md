@@ -101,7 +101,8 @@ docker compose up -d postgres
 
 # 4. Check what survived
 docker compose exec postgres psql -U learner -d acid_lab -c "SELECT * FROM durability_test;"
-docker compose logs postgres | grep -i "redo\|recovery"
+docker compose logs postgres | Select-String "redo|recovery"   # PowerShell
+# docker compose logs postgres | grep -iE "redo|recovery"      # bash / macOS / Linux
 ```
 
 You should see the committed rows survived, the uncommitted row is gone, and the logs show
