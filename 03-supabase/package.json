@@ -1,0 +1,26 @@
+{
+  "name": "03-supabase",
+  "version": "1.0.0",
+  "description": "Supabase learning lab: local stack, RLS, auth, realtime, storage, edge functions",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "supabase start",
+    "stop": "supabase stop",
+    "status": "supabase status",
+    "reset": "supabase db reset",
+    "lesson:rls": "docker exec -i supabase_db_03-supabase psql -U postgres -d postgres < lessons/01_rls_under_the_hood.sql",
+    "lesson:client": "node lessons/02_client_and_rls.mjs",
+    "lesson:realtime": "node lessons/03_realtime.mjs",
+    "lesson:storage": "node lessons/04_storage.mjs",
+    "lesson:functions": "node lessons/05_edge_function.mjs",
+    "gen:types": "supabase gen types typescript --local > types/database.types.ts",
+    "psql": "docker exec -it supabase_db_03-supabase psql -U postgres -d postgres"
+  },
+  "devDependencies": {
+    "supabase": "^3.2.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.119.0"
+  }
+}
